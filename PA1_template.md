@@ -26,7 +26,7 @@ colnames(stepsByDay) <- c("date","steps")
 with(stepsByDay, hist(steps,col="darkgreen",main="Histogram of Steps per Day", xlab="Steps", ylab="Frequency in Days"))
 ```
 
-![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-2-1.png) 
+![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-2.png) 
 
 *Calculate and report the mean and median total number of steps taken per day*
 
@@ -35,7 +35,7 @@ mean(stepsByDay$steps)
 ```
 
 ```
-## [1] 10766.19
+## [1] 10766
 ```
 
 ```r
@@ -57,7 +57,7 @@ colnames(avgStepsByInterval) <- c("interval","steps")
 with(avgStepsByInterval,qplot(interval,steps,geom="line",xlab="Interval", ylab="Steps"))
 ```
 
-![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-4-1.png) 
+![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-4.png) 
 ### Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?
 
 ```r
@@ -65,8 +65,8 @@ tail(avgStepsByInterval[order(avgStepsByInterval$steps),],1)
 ```
 
 ```
-##     interval    steps
-## 104      835 206.1698
+##     interval steps
+## 104      835 206.2
 ```
 
 ## Imputing missing values
@@ -103,7 +103,7 @@ colnames(stepsByDayComplete) <- c("date","steps")
 with(stepsByDay, hist(steps,col="darkgreen",main="Histogram of Steps per Day", xlab="Steps", ylab="Frequency in Days"))
 ```
 
-![plot of chunk unnamed-chunk-8](figure/unnamed-chunk-8-1.png) 
+![plot of chunk unnamed-chunk-8](figure/unnamed-chunk-8.png) 
 
 *Calculate and report the mean and median total number of steps taken per day*
 *See Comparison of the results with the original calculation*
@@ -116,13 +116,10 @@ data.frame(Original = c(Mean=mean(stepsByDay$steps),
 ```
 
 ```
-##        Original  Impuned
-## Mean   10766.19 10784.92
-## Median 10765.00 10909.00
+##        Original Impuned
+## Mean      10766   10785
+## Median    10765   10909
 ```
-
-```
-
 
 ## Are there differences in activity patterns between weekdays and weekends?
 *Create a new factor variable in the dataset with two levels – “weekday” and “weekend” indicating whether a given date is a weekday or weekend day.*
@@ -147,4 +144,4 @@ colnames(avgStepsByIntervalComplete) <- c("interval","daytype","steps")
 qplot(interval, steps, data=avgStepsByIntervalComplete,geom="line",facets=. ~ daytype)
 ```
 
-![plot of chunk unnamed-chunk-11](figure/unnamed-chunk-11-1.png) 
+![plot of chunk unnamed-chunk-11](figure/unnamed-chunk-11.png) 
